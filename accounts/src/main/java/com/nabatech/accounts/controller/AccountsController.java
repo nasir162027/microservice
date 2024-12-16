@@ -1,6 +1,7 @@
 package com.nabatech.accounts.controller;
 
 import com.nabatech.accounts.constants.AccountsConstants;
+import com.nabatech.accounts.dto.AccountsContactInfoDto;
 import com.nabatech.accounts.dto.CustomerDto;
 import com.nabatech.accounts.dto.ErrorResponseDto;
 import com.nabatech.accounts.dto.ResponseDto;
@@ -34,12 +35,15 @@ public class AccountsController {
 
     private final AccountsService accountsService;
     private final Environment environment;
+    private final AccountsContactInfoDto accountsContactInfoDto;
 
     @Autowired
     public AccountsController(AccountsService accountsService,
-                              Environment environment) {
+                              Environment environment,
+                              AccountsContactInfoDto accountsContactInfoDto) {
         this.accountsService = accountsService;
         this.environment = environment;
+        this.accountsContactInfoDto = accountsContactInfoDto;
     }
 
     @Value("${build.version}")
@@ -235,5 +239,35 @@ public class AccountsController {
         return ResponseEntity.
                 ok().
                 body(environment.getProperty("JAVA_HOME")+" :Maven "+environment.getProperty("MAVEN_HOME"));
+    }
+
+    @Operation(
+            summary = "Get Contact information",
+            description = "REST API to get contact information"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "417",
+                    description = "Expectation Failed"
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    }
+    )
+
+    @GetMapping("/contact-info")
+    ResponseEntity<AccountsContactInfoDto> contactInfo(){
+        return ResponseEntity.
+                ok().
+                body(accountsContactInfoDto);
     }
 }
