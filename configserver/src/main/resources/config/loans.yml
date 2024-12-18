@@ -1,0 +1,16 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: loans
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to NabaBank loans related local APIs"
+  contactDetails:
+    name: "Naba-developer"
+    email: "nabatech.com.bd"
+  onCallSupport:
+    - "+88017234509875"
+    - "+88018234567899"

@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: accounts
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to NabaBank accounts related local APIs"
+  contactDetails:
+    name: "Naba-developer"
+    email: "nabatech.com.bd"
+  onCallSupport:
+    - "+88017234509875"
+    - "+88018234567899"
+
