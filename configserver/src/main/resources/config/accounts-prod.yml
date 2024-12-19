@@ -1,7 +1,6 @@
 build:
   version: "3.0"
 
-
 accounts:
   message: "Welcome to NabaBank accounts related prod APIs"
   contactDetails:
