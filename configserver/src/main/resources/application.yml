@@ -2,12 +2,18 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    active: git
+  #active: native
   cloud:
     config:
       server:
-        native:
-          search-locations: "E:\\Spring Project\\microservcie\\config"
+        git:
+          uri: "https://github.com/nasir162027/microservice.git"
+          default-label: master
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+          #search-locations: "E:\\Spring Project\\microservcie\\config"
         # search-locations: "classpath:/config"
 
 server:
