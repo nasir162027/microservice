@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: loans
+  profiles:
+    active: "prod"
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
@@ -18,21 +20,4 @@ spring:
     show-sql: true
 
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-  profiles:
-    active:
-      - "qa"
-
-build:
-  version: "1.0"
-
-loans:
-  message: "Welcome to NabaBank loans related local APIs"
-  contactDetails:
-    name: "Naba-developer"
-    email: "nabatech.com.bd"
-  onCallSupport:
-    - "+88017234509875"
-    - "+88018234567899"
+    import: "configserver:http://localhost:8071/"
