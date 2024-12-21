@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to NabaBank cards related prod APIs"
+  contactDetails:
+    name: "Naba-prod Developer"
+    email: "nabatech.prod.com.bd"
+  onCallSupport:
+    - "+88017234575"
+    - "+88018267899"
