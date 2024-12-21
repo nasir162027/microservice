@@ -2,21 +2,32 @@ spring:
   application:
     name: "configserver"
   profiles:
-#    active: git
-    active: native
+    active: git
+#    active: native
   cloud:
     config:
       server:
-        native:
+#        native:
 
-#        git:
-#          uri: "https://github.com/nasir162027/microservice.git"
-#          default-label: master
-#          timeout: 5
-#          clone-on-start: true
-#          force-pull: true
-          search-locations: "E:\\Spring Project\\microservcie\\config"
+        git:
+          uri: "https://github.com/nasir162027/microservice.git"
+          default-label: master
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+  #          search-locations: "E:\\Spring Project\\microservcie\\config"
         # search-locations: "classpath:/config"
+    username: "guest"
+    password: "guest"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 server:
   port: 8071
